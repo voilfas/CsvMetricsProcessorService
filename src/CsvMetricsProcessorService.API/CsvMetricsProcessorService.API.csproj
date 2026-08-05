@@ -17,4 +17,9 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CsvMetricsProcessorService.Application\CsvMetricsProcessorService.Application.csproj" />
+      <ProjectReference Include="..\CsvMetricsProcessorService.Infrastructure\CsvMetricsProcessorService.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
