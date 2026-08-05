@@ -1,0 +1,7 @@
+﻿services:
+  csvmetricsprocessorservice.api:
+    image: csvmetricsprocessorservice.api
+    build:
+      context: .
+      dockerfile: src/CsvMetricsProcessorService.API/Dockerfile
+

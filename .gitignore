@@ -1,0 +1,52 @@
+## --- Результаты сборки и компиляции ---
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## --- Файлы конфигурации пользователя и секреты (ВАЖНО!) ---
+appsettings*.Development.json
+appsettings*.Local.json
+*.user
+*.userosscache
+*.suo
+*.userprefs
+secrets.json
+
+## --- Конфигурации IDE и редакторов ---
+# Visual Studio
+.vs/
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.DotSettings.user
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+## --- Локальные пакеты и кэш ---
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+
+## --- Фронтенд (если используешь Angular/React/Vue внутри ASP.NET) ---
+node_modules/
+/wwwroot/lib/
+dist/
+.npm/
+npm-debug.log*
+
+## --- Файлы ОС ---
+Thumbs.db
+.DS_Store
