@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CsvMetricsProcessorService.Application\CsvMetricsProcessorService.Application.csproj" />
+    </ItemGroup>
+
 </Project>
