@@ -40,6 +40,7 @@ public static class DomainErrors
             "Execution time can't be infinite or Nan");
     }
 
+    // Ошибки для VO - Value
     public static class Value
     {
         public static readonly Error InfinityNan = new Error(
@@ -57,5 +58,33 @@ public static class DomainErrors
         public static readonly Error InvalidDate = new Error(
             "MetricsValue.InvalidDate",
             "Date can't be in the feature and earlier than 01-01-2000");
+
+        public static readonly Error EmptyOrNullMetrics = new Error(
+            "MetricsValues.EmptyList",
+            "List of metrics can't be null or empty.");
+    }
+    
+    // Ошибки для сущности MetricsResult
+    public static class MetricsResult
+    {
+        public static readonly Error NullFileName = new Error(
+            "MetricsResult.NullFileName",
+            "File name can't be null or empty");
+        
+        public static readonly Error InvalidDeltaDate = new Error(
+            "MetricsResult.InvalidDeltaDate",
+            "Delta time difference can't be negative");
+        
+        public static readonly Error InvalidAvgExecutionTime = new Error(
+            "MetricsResult.InvalidAvgExecutionTime",
+            "Average execution time can't be negative");
+        
+        public static readonly Error InvalidNumericValues = new Error(
+            "MetricsResult.InvalidNumericValues",
+            "Arguments can't be infinity or nan");
+
+        public static readonly Error MinGreaterThanMax = new Error(
+            "MetricsResult.MinGreaterThanMax",
+            "Min value can't be greater than max value");
     }
 }
