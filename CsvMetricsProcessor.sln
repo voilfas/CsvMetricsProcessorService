@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		compose.yaml = compose.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvMetricsProcessorService.Domain.Tests", "tests\CsvMetricsProcessorService.Domain.Tests\CsvMetricsProcessorService.Domain.Tests.csproj", "{71AE350F-87E9-48A3-AD8F-447C1BBBD11F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +41,16 @@ Global
 		{DAEC135E-E470-49B5-BD4E-8A8ABA928B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEC135E-E470-49B5-BD4E-8A8ABA928B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEC135E-E470-49B5-BD4E-8A8ABA928B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AE350F-87E9-48A3-AD8F-447C1BBBD11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AE350F-87E9-48A3-AD8F-447C1BBBD11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AE350F-87E9-48A3-AD8F-447C1BBBD11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AE350F-87E9-48A3-AD8F-447C1BBBD11F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6F7D9A8A-8E4B-4B57-9E5B-51AB7809F137} = {335E5EE7-0C94-4D4D-A8C5-8FB2E2851041}
 		{73172352-CF84-4AA9-B4E1-48CDDCD633A9} = {335E5EE7-0C94-4D4D-A8C5-8FB2E2851041}
 		{9A924814-0D18-4215-BFED-3966DDE7BE27} = {335E5EE7-0C94-4D4D-A8C5-8FB2E2851041}
 		{DAEC135E-E470-49B5-BD4E-8A8ABA928B86} = {335E5EE7-0C94-4D4D-A8C5-8FB2E2851041}
+		{71AE350F-87E9-48A3-AD8F-447C1BBBD11F} = {25F2281E-79CB-4B40-AC25-93A71A09F46F}
 	EndGlobalSection
 EndGlobal
