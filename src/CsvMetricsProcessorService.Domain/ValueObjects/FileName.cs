@@ -30,7 +30,7 @@ public record FileName
         if (!trimmedFileName.EndsWith(".csv"))
             return Result<FileName>.Failure(DomainErrors.FileName.InvalidFileType);
         
-        return Result<FileName>.Success(new FileName(fileName));
+        return Result<FileName>.Success(new FileName(trimmedFileName));
     }
     
     public override string ToString() =>  Value;
