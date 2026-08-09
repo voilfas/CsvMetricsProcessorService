@@ -24,4 +24,9 @@ public record Value
 
         return Result<Value>.Success(new Value(indicator));
     }
+
+    public static Value FromDb(double indicator)
+    {
+        return new Value(indicator);
+    }
 }
