@@ -57,7 +57,7 @@ public class CsvParser : ICsvParser
                         new Error("Csv.MissingValue", $"Ошибка в строке {rowCount}: Отсутствует значение Date."));
                 }
                 
-                string expectedDateFormat = "yyyy-MM-dd'T'HH'-'mm'-'ss'.fffffffZ'";
+                string expectedDateFormat = "yyyy'-'MM'-'dd'T'HH'-'mm'-'ss'.'fffffff'Z'";
                 
                 if (!DateTime.TryParseExact(rawDate, expectedDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out DateTime parsedDate))
                 {
@@ -67,6 +67,8 @@ public class CsvParser : ICsvParser
                             new Error("Csv.InvalidDateFormat", $"Ошибка в строке {rowCount}: Неверный формат даты '{rawDate}'."));
                     }
                 }
+                
+                parsedDate = DateTime.SpecifyKind(parsedDate, DateTimeKind.Utc);
                 
                 var executionTimeResult = ExecutionTime.Create(rawExecutionTime);
                 if (executionTimeResult.IsFailure)

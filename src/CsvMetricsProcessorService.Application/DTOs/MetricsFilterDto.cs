@@ -1,4 +1,6 @@
-﻿using CsvMetricsProcessorService.Domain.ValueObjects;
+﻿using System.Text.Json.Serialization;
+using CsvMetricsProcessorService.Domain.ValueObjects;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace CsvMetricsProcessorService.Application.DTOs;
 
@@ -9,14 +11,21 @@ public record MetricsFilterDto(
     string? ExecutionTimeRange = null
 )
 {
-    public DateTime? MinDate => ParseDateRange(DateRange).From;
+    /*public DateTime? MinDate => ParseDateRange(DateRange).From;
     public DateTime? MaxDate => ParseDateRange(DateRange).To;
     
     public double? MinAvgValue => ParseDoubleRange(ValueRange).From;
     public double? MaxAvgValue => ParseDoubleRange(ValueRange).To;
     
     public double? MinAvgExecutionTime => ParseDoubleRange(ExecutionTimeRange).From;
-    public double? MaxAvgExecutionTime => ParseDoubleRange(ExecutionTimeRange).To;
+    public double? MaxAvgExecutionTime => ParseDoubleRange(ExecutionTimeRange).To;*/
+    
+    public DateTime? GetMinDate() => ParseDateRange(DateRange).From;
+    public DateTime? GetMaxDate() => ParseDateRange(DateRange).To;
+    public double? GetMinAvgValue() => ParseDoubleRange(ValueRange).From;
+    public double? GetMaxAvgValue() => ParseDoubleRange(ValueRange).To;
+    public double? GetMinAvgExecutionTime() => ParseDoubleRange(ExecutionTimeRange).From;
+    public double? GetMaxAvgExecutionTime() => ParseDoubleRange(ExecutionTimeRange).To;
 
     private (double? From, double? To) ParseDoubleRange(string? value)
     {
