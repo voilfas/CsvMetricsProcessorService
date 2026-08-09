@@ -36,17 +36,29 @@ public class MetricsQueries : IMetricsQueries
                 created_at as CreatedAt
             FROM metrics_results
             WHERE (@FileName IS NULL OR file_name = @FileName)         
-            AND (@MinDate IS NULL OR min_date >= @MinDate)
-            AND (@MaxDate IS NULL OR min_date <= @MaxDate)
-            AND (@MinAvgValue IS NULL OR min_value >= @MinAvgValue)
-            AND (@MaxAvgValue IS NULL OR max_value <= @MaxAvgValue)
-            AND (@MinAvgExecutionTime IS NULL OR avg_execution_time >= @MinExecutionTime)
-            ANd (@MaxAvgExecutionTime IS NULL OR avg_execution_time <= @MaxExecutionTime)
-            ORDER BY created_at DESC
+                AND (@MinDate::timestamp with time zone IS NULL OR min_date >= @MinDate::timestamp with time zone)
+                AND (@MaxDate::timestamp with time zone IS NULL OR min_date <= @MaxDate::timestamp with time zone)
+                AND (@MinAvgValue::double precision IS NULL OR avg_value >= @MinAvgValue::double precision)
+                AND (@MaxAvgValue::double precision IS NULL OR avg_value <= @MaxAvgValue::double precision)
+                AND (@MinAvgExecutionTime::double precision IS NULL OR avg_execution_time >= @MinAvgExecutionTime::double precision)
+                AND (@MaxAvgExecutionTime::double precision IS NULL OR avg_execution_time <= @MaxAvgExecutionTime::double precision)
+            ORDER BY created_at DESC;
         ";
 
+        /*var result = await connection.QueryAsync<MetricsResultDto>(
+            new CommandDefinition(sql, filter, cancellationToken: ct));*/
+        
         var result = await connection.QueryAsync<MetricsResultDto>(
-            new CommandDefinition(sql, filter, cancellationToken: ct));
+            new CommandDefinition(sql, new 
+            {
+                FileName = filter.FileName,
+                MinDate = filter.GetMinDate(),
+                MaxDate = filter.GetMaxDate(),
+                MinAvgValue = filter.GetMinAvgValue(),
+                MaxAvgValue = filter.GetMaxAvgValue(),
+                MinAvgExecutionTime = filter.GetMinAvgExecutionTime(),
+                MaxAvgExecutionTime = filter.GetMaxAvgExecutionTime()
+            }, cancellationToken: ct));
         
         return result.ToList();
     }

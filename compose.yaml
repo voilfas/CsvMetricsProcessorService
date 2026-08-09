@@ -1,7 +1,37 @@
 ﻿services:
-  csvmetricsprocessorservice.api:
-    image: csvmetricsprocessorservice.api
+  metrics_api:
     build:
-      context: .
+      context: . 
       dockerfile: src/CsvMetricsProcessorService.API/Dockerfile
+    container_name: csv_metrics_api
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=postgres_db;Port=5432;Database=csv_metrics_db;Username=postgres;Password=postgres
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    restart: unless-stopped
 
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: csv_metrics_postgres
+    environment:
+      POSTGRES_DB: csv_metrics_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - csv_metrics_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d csv_metrics_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
+volumes:
+  csv_metrics_data:
