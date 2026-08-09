@@ -32,6 +32,11 @@ public record FileName
         
         return Result<FileName>.Success(new FileName(trimmedFileName));
     }
+
+    public static FileName FromDb(string value)
+    {
+        return new FileName(value);
+    }
     
     public override string ToString() =>  Value;
 }
